@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <% if account_signed_in? %>
+            <%= current_account.full_name %>
+            <%
+=begin%>
+            <%= link_to "Profile", profile_path, class: "btn btn-outline-primary" %>
+            <%
+=end%>
+            <%= link_to "Settings", edit_account_registration_path, class: "btn btn-outline-primary" %>
+            <%= link_to "Sign Out", destroy_account_session_path, method: :delete, class: "btn btn-outline-primary" %>
+            <% else %>
+            <%= link_to "Log In", new_account_session_path, class: "btn btn-outline-primary" %>
+            <%= link_to "Sign up", new_account_registration_path, class: "btn btn-outline-danger" %>
+            <% end %>
+            <p class="h3"><%= link_to "Reddit", root_path %></p>
+        </div>
+    </div>
+</div>
