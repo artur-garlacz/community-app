@@ -1,7 +1,38 @@
-<div class="container">
+<div class="container" style="height: 90vh;">
     <div class="row">
-        <div class="col-12">
+        <div class="col-sm-8">
+            <%
+=begin%>
+            <% @posts.each do |post| %>
+            <div class="card mt-2">
+                <h4><%= link_to post.title, community_post_path(post.community_id, post) %></h4>
+                <p>
+                    <%= truncate post.body, length: 200 %>
+                </p>
+            </div>
+            <% end %>
+            <%
+=end%>
+
+            <%= render partial: "posts/list", locals: { posts: @posts } %>
+        </div>
+        <div class="col-sm-4">
             <%= link_to "View all", communities_path, class:"btn btn-primary" %>
+            <div class="card">
+                <% @communities.each do |community| %>
+                <li class="list-group-item"><%= link_to community.name, community_path(community) %></li>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-12 h-100">
+            <%
+=begin%>
+            <%= link_to "View all", communities_path, class:"btn btn-primary" %>
+            <%
+=end%>
             <div class="card">
                 <% @communities.each do |community| %>
                 <li class="list-group-item"><%= link_to community.name, community_path(community) %></li>
