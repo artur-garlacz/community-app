@@ -1,6 +1,6 @@
 <%= link_to "Create new post", new_community_post_path(@community), class: "btn btn-primary" %>
 
-<%= @community.name %>
+<h3><%= @community.name %> <%= pluralize @subscriber_count, "member" %> </h3>
 
 <% @posts.each do |post| %>
 <div class="card mt-2">
@@ -8,6 +8,7 @@
     <p>
         <%= truncate post.body, length: 200 %>
     </p>
+
 </div>
 <% end %>
 
